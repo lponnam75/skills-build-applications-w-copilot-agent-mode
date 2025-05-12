@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-4k0+(7nix=!l5%x4h+hij=z#btq^057f#-s=d3%*90u)(#i-!$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "tracker",
+    "tracker.apps.TrackerConfig",
     "rest_framework",
     "djongo",
     "corsheaders",
+    "octofit",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "octofit.urls"
@@ -118,12 +120,11 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
+# Additional configuration for the Django project
+CORS_ALLOW_ALL_ORIGINS = True
 
-STATIC_URL = "static/"
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = "/static/"
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
